@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Mahima ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 18px;
+  animation: float 6s linear infinite;
+}
+@keyframes float {
+  0% {transform: translateY(0); opacity: 1;}
+  100% {transform: translateY(-110vh); opacity: 0;}
+}
+
+/* Card */
+.card {
+  width: 320px;
+  height: 460px;
+  perspective: 1200px;
+  cursor: pointer;
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card.open .inner {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Front */
+.front {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #ff4f8b;
+  text-align: center;
+}
+
+/* Back */
+.back {
+  background: linear-gradient(135deg, #ffe0ef, #fff);
+  transform: rotateY(180deg);
+  padding: 20px;
+  text-align: center;
+}
+
+.back h2 {
+  color: #ff4f8b;
+}
+
+.signature {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #ff4f8b;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC (hidden YouTube player) -->
+<iframe id="song" width="0" height="0"
+src="https://www.youtube.com/embed/nyuo9-OjNNg?enablejsapi=1"
+allow="autoplay"></iframe>
+
+<div class="card" onclick="openCard()">
+  <div class="inner">
+    <div class="front">
+      💌 Tap to open<br>
+      <strong>For My Mahima</strong>
+    </div>
+
+    <div class="back">
+      <h2>For My Mahima 💕</h2>
+      <p>
+        I wanna be your favorite hello,<br>
+        and your hardest goodbye.
+      </p>
+
+      <p>
+        I choose you.<br>
+        Every day.<br>
+        Again and again.
+      </p>
+
+      <p>
+        🤍 Endless Love <br>
+        🌙 Late Night Talks <br>
+        ♾️ Forever With Me
+      </p>
+
+      <div class="signature">
+        Forever Yours,<br>
+        Jaipreet Singh ❤️
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let played = false;
+
+function openCard() {
+  document.querySelector('.card').classList.toggle('open');
+
+  if (!played) {
+    document.getElementById('song').src += "&autoplay=1";
+    played = true;
+  }
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
+</script>
+
+</body>
+</html>
